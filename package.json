@@ -1,0 +1,14 @@
+{
+  "name": "font-detect",
+  "version": "1.0.0",
+  "description": "Detect used fonts of webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "phantomjs": "^1.9.16"
+  }
+}

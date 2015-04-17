@@ -2,8 +2,8 @@ var page   = require('webpage').create();
 var system = require('system');
 
 if ( system.args.length < 2 ) {
-	console.log('Usage: ' + system.args[0] + ' url [font]');
-	phantom.exit();
+  console.log('Usage: ' + system.args[0] + ' url [font]');
+  phantom.exit();
 }
 
 var url        = system.args[1];
@@ -11,8 +11,8 @@ var testedFont = system.args[2] || null;
 
 
 /*page.onConsoleMessage = function (msg) {
-	console.log(msg);
-};*/
+  console.log(msg);
+  };*/
 
 console.log(url);
 
@@ -101,5 +101,5 @@ page.open(url, function (status) {
     }
   }
 
-	phantom.exit();
+  phantom.exit();
 });

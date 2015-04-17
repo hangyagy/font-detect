@@ -3,7 +3,9 @@ Detect website fonts with phantomjs
 
 ## Install
 
+```
 $ npm install
+```
 
 ## Run
 

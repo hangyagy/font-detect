@@ -1,7 +1,7 @@
 # font-detect
 Detect website fonts with phantomjs
 
-## Install
+## Install dependencies
 
 ```
 $ npm install

@@ -44,6 +44,11 @@ page.open(url, function (status) {
       var addElementFonts = function(element) {
         var fontFamily = window.getComputedStyle(element).fontFamily;
         var fontWeight = weightToNumber(window.getComputedStyle(element).fontWeight);
+		var fontStyle  = window.getComputedStyle(element).fontStyle;
+
+		if ( fontStyle && fontStyle === 'italic' ) {
+			fontWeight += 'italic';
+		}
 
         if ( fontFamily ) {
           var elementFonts = fontFamily.split(',').map(function(s) {
@@ -56,7 +61,8 @@ page.open(url, function (status) {
             if ( typeof fonts[elementFonts[j]] === 'undefined' ) {
               fonts[elementFonts[j]] = {
                 occurrences: [],
-                weights: []
+                weights: [],
+				styles: []
               };
             }
 

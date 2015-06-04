@@ -12,9 +12,13 @@ var getFonts = function(url, testedFont) {
 			testedFont || ''
 		];
 
+		var options = {
+			maxBuffer: 1024 * 1024
+		};
+
 		var execFile = Promise.promisify(childProcess.execFile);
 
-		execFile(binPath, childArgs)
+		execFile(binPath, childArgs, options)
 			.then(function(execOut) {
 				var result;
 				var stdout = execOut[0] || '';
@@ -23,6 +27,7 @@ var getFonts = function(url, testedFont) {
 					result = JSON.parse(stdout);
 					resolve(result);
 				} catch(parseError) {
+					console.log(stdout);
 					reject(parseError);
 				}
 			})

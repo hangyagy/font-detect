@@ -44,11 +44,11 @@ page.open(url, function (status) {
       var addElementFonts = function(element) {
         var fontFamily = window.getComputedStyle(element).fontFamily;
         var fontWeight = weightToNumber(window.getComputedStyle(element).fontWeight);
-		var fontStyle  = window.getComputedStyle(element).fontStyle;
+        var fontStyle  = window.getComputedStyle(element).fontStyle;
 
-		if ( fontStyle && fontStyle === 'italic' ) {
-			fontWeight += 'italic';
-		}
+        if ( fontStyle && fontStyle === 'italic' ) {
+          fontWeight += 'italic';
+        }
 
         if ( fontFamily ) {
           var elementFonts = fontFamily.split(',').map(function(s) {
@@ -58,23 +58,27 @@ page.open(url, function (status) {
           for ( var j in elementFonts ) {
             var fontName = elementFonts[j];
 
-            if ( typeof fonts[elementFonts[j]] === 'undefined' ) {
-              fonts[elementFonts[j]] = {
+            // Remove quotes
+            fontName = fontName.replace(/^'(.*)'$/, '$1');
+
+            if ( typeof fonts[fontName] === 'undefined' ) {
+              fonts[fontName] = {
                 occurrences: [],
                 weights: [],
-				styles: []
+                styles: []
               };
             }
 
-            fonts[elementFonts[j]].occurrences.push({
+            fonts[fontName].occurrences.push({
               class: element.className,
               id: element.id,
               tag: element.tagName,
-              data: element.outerHTML
+              data: element.outerHTML,
+              weight: fontWeight
             });
 
-            if ( fonts[elementFonts[j]].weights.indexOf(fontWeight) === -1 ) {
-              fonts[elementFonts[j]].weights.push(fontWeight);
+            if ( fonts[fontName].weights.indexOf(fontWeight) === -1 ) {
+              fonts[fontName].weights.push(fontWeight);
             }
           }
         }
